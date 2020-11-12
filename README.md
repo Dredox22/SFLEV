@@ -1,2 +1,3 @@
-![sf](logo.png)]
+![sf](logo.png)
+
 My homework tasks
