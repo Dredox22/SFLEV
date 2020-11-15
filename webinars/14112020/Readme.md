@@ -14,4 +14,4 @@ Proposed tasks:
 
   - *realize a function that returns remainder of dividing the Fibonacci number by a certain number*
 
-I decided to choose the second one and solved the third one at my will.
+I decided to choose the **second one** and solved the third one at my will.
