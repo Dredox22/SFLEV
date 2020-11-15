@@ -2,15 +2,15 @@
 
 Proposed tasks:
 
-- Behold, a new twist 
+- **Behold, a new twist** 
 
   - *realize a function that rotates the image by any number of degrees*
 
-- I go right through 
+- **I go right through** 
 
   - *realize a function that turns adjacency matrix into distance matrix using Floyd algorithm*
 
-- Fibonacci-2. Comeback 
+- **Fibonacci-2. Comeback** 
 
   - *realize a function that returns remainder of dividing the Fibonacci number by a certain number*
 
