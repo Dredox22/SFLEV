@@ -14276,7 +14276,7 @@ $</p>
 0.10x_1 + 0.08x_2 + 0.09x_3 \leq 0.09
 $</p>
 <p>$
-0.7x_1 + 0.3x_2 + 0.5x_3 \leq 0.5
+0.007x_1 + 0.003x_2 + 0.005x_3 \leq 0.005
 $</p>
 <p>$
 0 \leq x \leq 1
@@ -14305,10 +14305,10 @@ $</p>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">optimal_receipt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">cost_accuracy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentage_accuracy</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">optimal_receipt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">],</span> <span class="n">cost_accuracy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentage_accuracy</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Функция, возвращающая оптимальные</span>
 <span class="sd">    доли материалов шихты</span>
@@ -14371,6 +14371,7 @@ $</p>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Доли материалов: </span><span class="si">{}</span><span class="s1"> : </span><span class="si">{}</span><span class="s1"> : </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">)),</span>
                                                   <span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">)),</span>
                                                   <span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">))))</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">value</span>
 </pre></div>
 
      </div>
@@ -14394,9 +14395,9 @@ $</p>
 
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.17</span><span class="p">],</span>
      <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.09</span><span class="p">],</span>
-     <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]]</span>
+     <span class="p">[</span><span class="mf">0.007</span><span class="p">,</span><span class="mf">0.003</span><span class="p">,</span><span class="mf">0.005</span><span class="p">]]</span>
 
-<span class="n">optimal_receipt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">optimal_receipt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">);</span>
 </pre></div>
 
      </div>
