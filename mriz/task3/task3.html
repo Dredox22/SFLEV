@@ -14255,25 +14255,31 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="3.-&#1060;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103;-&#1087;&#1086;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;">3. &#1060;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1087;&#1086;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;<a class="anchor-link" href="#3.-&#1060;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103;-&#1087;&#1086;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;">&#182;</a></h1><p>Пусть $x_1,x_2,x_3$ - процентная доля компонентов шихты для выплавки стали.</p>
+<h1 id="3.-&#1060;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103;-&#1087;&#1086;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;">3. &#1060;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1087;&#1086;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;<a class="anchor-link" href="#3.-&#1060;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103;-&#1087;&#1086;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;">&#182;</a></h1><p>Пусть</p>
+<ul>
+<li><p>$X = x_1,x_2,x_3$ - пространство долей компонентов шихты для выплавки стали.</p>
+</li>
+<li><p>$C = c_1,c_2,c_3$ - пространство весов (цен) компонентов шихты для выплавки стали.</p>
+</li>
+</ul>
 <p>Задача:</p>
 $$
-(C,x)\rightarrow \min_{x_1+x_2+x_3 = 200}
+(C,X) = \sum\limits_{i=1}^3c_ix_i = c_1x_1 + c_2x_2 + c_3x_3 \rightarrow \min_{x_1+x_2+x_3 = 200}
 $$<p>Ограничения нормированности по ГОСТу (условия):</p>
 <p>$
-0.15x_1 + 0.15x_2 + 0.17x_3 \geq 0.16 \times 200
+0.15x_1 + 0.15x_2 + 0.17x_3 \geq 0.16
 $</p>
 <p>$
-0.15x_1 + 0.15x_2 + 0.17x_3 \leq 0.18 \times 200
+0.15x_1 + 0.15x_2 + 0.17x_3 \leq 0.18
 $</p>
 <p>$
-0.10x_1 + 0.08x_2 + 0.09x_3 \leq 0.09 \times 200
+0.10x_1 + 0.08x_2 + 0.09x_3 \leq 0.09
 $</p>
 <p>$
-0.7x_1 + 0.3x_2 + 0.5x_3 \leq 0.5 \times 200
+0.7x_1 + 0.3x_2 + 0.5x_3 \leq 0.5
 $</p>
 <p>$
-x \geq 0
+0 \leq x
 $</p>
 <p>Ограничения на количество материалов:</p>
 <p>$
@@ -14286,13 +14292,14 @@ $</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="4.-&#1040;&#1083;&#1075;&#1086;&#1088;&#1080;&#1090;&#1084;-&#1080;-&#1055;&#1054;">4. &#1040;&#1083;&#1075;&#1086;&#1088;&#1080;&#1090;&#1084; &#1080; &#1055;&#1054;<a class="anchor-link" href="#4.-&#1040;&#1083;&#1075;&#1086;&#1088;&#1080;&#1090;&#1084;-&#1080;-&#1055;&#1054;">&#182;</a></h1><p>В качестве ПО будем использовать ЯП python, с подключенными модулями:</p>
+<h1 id="4.-&#1040;&#1083;&#1075;&#1086;&#1088;&#1080;&#1090;&#1084;-&#1080;-&#1055;&#1054;">4. &#1040;&#1083;&#1075;&#1086;&#1088;&#1080;&#1090;&#1084; &#1080; &#1055;&#1054;<a class="anchor-link" href="#4.-&#1040;&#1083;&#1075;&#1086;&#1088;&#1080;&#1090;&#1084;-&#1080;-&#1055;&#1054;">&#182;</a></h1><p>В качестве ПО будем использовать ЯП <strong>Python</strong> с подключенными модулями:</p>
 <ul>
-<li><p>numpy - для работы с линейной алгеброй</p>
+<li><p><strong>numpy</strong> - для работы с линейной алгеброй</p>
 </li>
-<li><p>cvxpy - для работы с целочисленным линейным программированием</p>
+<li><p><strong>cvxpy</strong> - для работы с линейным программированием</p>
 </li>
 </ul>
+<p>В качестве среды разработки <strong>Jupyter Lab</strong>,</p>
 
 </div>
 </div>
@@ -14304,7 +14311,7 @@ $</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Импортируем библиотеки</p>
+<p>Возьмем функцию из прошлой задачи:</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -14313,66 +14320,70 @@ $</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">cvxpy</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">optimal_receipt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">cost_accuracy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentage_accuracy</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Функция, возвращающая оптимальные</span>
+<span class="sd">    доли материалов шихты</span>
+<span class="sd">    </span>
+<span class="sd">    c - список </span>
+<span class="sd">    стоимостей материалов</span>
+<span class="sd">    </span>
+<span class="sd">    A - 2D-список </span>
+<span class="sd">    составов материалов</span>
+<span class="sd">    </span>
+<span class="sd">    b - список</span>
+<span class="sd">    значений по ГОСТ&#39;у</span>
+<span class="sd">    (по умолчанию, как в задаче)</span>
+<span class="sd">    </span>
+<span class="sd">    cost_accuracy - целое число</span>
+<span class="sd">    знаков после запятой стоимости за тонну</span>
+<span class="sd">    (по умолчанию None - до целого числа)</span>
+<span class="sd">    </span>
+<span class="sd">    percentage_accuracy - целое число</span>
+<span class="sd">    знаков после запятой значений оптимальных долей </span>
+<span class="sd">    (по умолчанию 3)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="kn">import</span> <span class="nn">cvxpy</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Значение стоимости не может быть отрицательным&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Значение состава материала не может быть отрицательным&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Значение ограничения отрицательное, возможны проблемы!&#39;</span><span class="p">)</span>
+    
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Внесем данные задачи и объявим переменную $x$</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[105]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">300</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">150</span><span class="p">])</span>
-
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.7</span><span class="p">],</span>
-              <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.3</span><span class="p">],</span>
-              <span class="p">[</span><span class="mf">0.17</span><span class="p">,</span><span class="mf">0.09</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
-
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span> <span class="o">*</span> <span class="mi">200</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">cvxpy</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">integer</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Запишем условия задачи оптимизации и значение, которое будем минимизировать</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[123]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">constraints</span> <span class="o">=</span> <span class="p">[(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-               <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
-               <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
-               <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
-               <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">200</span><span class="p">),</span>
-               <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">),</span>
-               <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">150</span><span class="p">),</span>
-               <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">),</span>
-               <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">75</span><span class="p">)]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">cvxpy</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">integer</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    
+    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                   <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                   <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                   <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+                   <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span>
+                   <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)]</span>
                
-<span class="n">total_value</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">x</span>
+    <span class="n">total_value</span> <span class="o">=</span> <span class="n">c</span> <span class="o">@</span> <span class="n">x</span>
+    <span class="n">problem</span> <span class="o">=</span> <span class="n">cvxpy</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cvxpy</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">total_value</span><span class="p">),</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Оптимальная стоимость тонны: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">round</span>(problem.solve(), cost_accuracy))
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Нет решения по ГОСТ</span><span class="se">\&#39;</span><span class="s1">у.&#39;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Оптимальные доли материалов: </span><span class="si">{}</span><span class="s1"> : </span><span class="si">{}</span><span class="s1"> : </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">)),</span>
+                                                  <span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">)),</span>
+                                                  <span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">))))</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">percentage_accuracy</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
 </pre></div>
 
      </div>
@@ -14383,21 +14394,131 @@ $</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Решим задачу минимизации и получим ответ:</p>
+<p>Запишем функцию для этой задачи:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">receipt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">in_stock</span><span class="p">,</span> <span class="n">need</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">cost_accuracy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentage_accuracy</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Функция, возвращающая оптимальные</span>
+<span class="sd">    доли материалов шихты</span>
+<span class="sd">    </span>
+<span class="sd">    c - список </span>
+<span class="sd">    стоимостей материалов</span>
+<span class="sd">    </span>
+<span class="sd">    A - 2D-список </span>
+<span class="sd">    составов материалов</span>
+<span class="sd">    </span>
+<span class="sd">    in_stock - список</span>
+<span class="sd">    количества материалов в наличии</span>
+<span class="sd">    </span>
+<span class="sd">    need - число,</span>
+<span class="sd">    которое надо произвести</span>
+<span class="sd">    </span>
+<span class="sd">    b - список</span>
+<span class="sd">    значений по ГОСТ&#39;у</span>
+<span class="sd">    (по умолчанию, как в задаче)</span>
+<span class="sd">    </span>
+<span class="sd">    cost_accuracy - целое число</span>
+<span class="sd">    знаков после запятой стоимости за тонну</span>
+<span class="sd">    (по умолчанию None - до целого числа)</span>
+<span class="sd">    </span>
+<span class="sd">    percentage_accuracy - целое число</span>
+<span class="sd">    знаков после запятой значений оптимальных долей </span>
+<span class="sd">    (по умолчанию 3)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="kn">import</span> <span class="nn">cvxpy</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">warnings</span>
+    
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">RuntimeWarning</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Значение стоимости не может быть отрицательным&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Значение состава материала не может быть отрицательным&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">in_stock</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Значение количества материалов в наличии не может быть отрицательным&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Значение ограничения отрицательное, возможны проблемы!&#39;</span><span class="p">)</span>
+    
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">need</span>
+    <span class="n">in_stock</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">in_stock</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">cvxpy</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">integer</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    
+    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                   <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                   <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                   <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span> <span class="o">@</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+                   <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="n">need</span><span class="p">),</span>
+                   <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">),</span>
+                   <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">in_stock</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                   <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">in_stock</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                   <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">in_stock</span><span class="p">[</span><span class="mi">2</span><span class="p">])]</span>
+               
+    <span class="n">total_value</span> <span class="o">=</span> <span class="n">c</span> <span class="o">@</span> <span class="n">x</span>
+    <span class="n">problem</span> <span class="o">=</span> <span class="n">cvxpy</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cvxpy</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">total_value</span><span class="p">),</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Стоимость тонны, если выполнить условие по количеству: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">round</span>(problem.solve()/need, cost_accuracy))
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Доли материалов, если выполнить условие по количеству: </span><span class="si">{}</span><span class="s1"> : </span><span class="si">{}</span><span class="s1"> : </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">)),</span>
+                                                                                            <span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">)),</span>
+                                                                                            <span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">))))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Нельзя произвести необходимое число материала. Посчитаем сколько материала максимум мы можем произвести по оптимальному рецепту:&#39;</span><span class="p">)</span>
+    
+    <span class="n">optimal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">optimal_receipt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span> <span class="o">/</span> <span class="n">need</span><span class="p">,</span> <span class="n">cost_accuracy</span><span class="o">=</span><span class="n">cost_accuracy</span><span class="p">,</span> <span class="n">percentage_accuracy</span><span class="o">=</span><span class="n">percentage_accuracy</span><span class="p">))</span>
+    <span class="n">coef</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">in_stock</span> <span class="o">/</span> <span class="n">optimal</span><span class="p">)</span>
+    <span class="n">optimal_values</span> <span class="o">=</span> <span class="n">optimal</span> <span class="o">*</span> <span class="n">coef</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">optimal_values</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Сколько материалов потребуется по оптимальному рецепту: </span><span class="si">{}</span><span class="s1"> : </span><span class="si">{}</span><span class="s1"> : </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">optimal_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">)),</span>
+                                                                                        <span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">optimal_values</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">)),</span>
+                                                                                        <span class="nb">abs</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">optimal_values</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">percentage_accuracy</span><span class="p">))))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;В сумме произведем: </span><span class="si">%s</span><span class="s1"> тонн&#39;</span> <span class="o">%</span><span class="k">round</span>(output,percentage_accuracy))
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="6.-&#1040;&#1085;&#1072;&#1083;&#1080;&#1079;">6. &#1040;&#1085;&#1072;&#1083;&#1080;&#1079;<a class="anchor-link" href="#6.-&#1040;&#1085;&#1072;&#1083;&#1080;&#1079;">&#182;</a></h1><p>Запустим функцию на наших данных:</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[131]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="n">cvxpy</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cvxpy</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">total_value</span><span class="p">),</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Стоимость: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">problem</span>.solve())
-<span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Доли материалов: </span><span class="si">{}</span><span class="s1"> : </span><span class="si">{}</span><span class="s1"> : </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
-<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;В рамках данных условий задача не решаема&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">150</span><span class="p">]</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.17</span><span class="p">],</span>
+     <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.09</span><span class="p">],</span>
+     <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]]</span>
+
+<span class="n">need</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="n">in_stock</span> <span class="o">=</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">75</span><span class="p">]</span>
+
+<span class="n">receipt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">in_stock</span><span class="p">,</span> <span class="n">need</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14417,8 +14538,11 @@ $</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Стоимость: inf
-В рамках данных условий задача не решаема
+<pre>Нельзя произвести необходимое число материала. Посчитаем сколько материала максимум мы можем произвести по оптимальному рецепту:
+Оптимальная стоимость тонны: 150
+Оптимальные доли материалов: 0.0 : 0.0 : 1.0.
+Сколько материалов потребуется по оптимальному рецепту: 0.0 : 0.0 : 75.0.
+В сумме произведем: 75.0 тонн
 </pre>
 </div>
 </div>
@@ -14430,8 +14554,8 @@ $</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="6.-&#1040;&#1085;&#1072;&#1083;&#1080;&#1079;">6. &#1040;&#1085;&#1072;&#1083;&#1080;&#1079;<a class="anchor-link" href="#6.-&#1040;&#1085;&#1072;&#1083;&#1080;&#1079;">&#182;</a></h1><p>В ходе решения этой задачи был получен ожидаемый ответ: нет решения.</p>
-<p>Изначально было видно, что решения, подходящего нашим условиям нет, т.к. у нас никогда не выполнится условие по процентному содержанию хрома. Необходимо либо подкорректировать состав, либо найти дополнительных поставщиков.</p>
+<p>В ходе решения этой задачи был получен ожидаемый ответ: нет решения для нужного числа материалов. Изначально было видно, что решения, подходящего нашим условиям нет, т.к. у нас никогда не выполнится условие по процентному содержанию хрома. Необходимо либо подкорректировать состав, либо найти дополнительных поставщиков.</p>
+<p>Вместо этого программа выдала сколько материала можно произвести по оптимальному рецепту</p>
 
 </div>
 </div>
