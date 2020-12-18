@@ -14416,13 +14416,20 @@ $</p>
 <span class="sd">    &#39;&#39;&#39;</span>
     
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;В случае без покупки ресурсов:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    
     <span class="n">profits</span> <span class="o">=</span> <span class="p">[</span><span class="n">optimal_receipt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">)]</span>
     
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;________________</span><span class="se">\n\n</span><span class="s1">В случае приобретения </span><span class="si">{}</span><span class="s1"> единиц </span><span class="si">{}</span><span class="s1"> ресурса:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-        <span class="n">s_new</span> <span class="o">=</span> <span class="n">s</span>
+        <span class="n">c_new</span> <span class="o">=</span> <span class="n">c</span>
+        <span class="n">s_new</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
         <span class="n">s_new</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">n</span>
-        <span class="n">profits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">optimal_receipt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">s_new</span><span class="p">,</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span><span class="o">*</span><span class="n">cp</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">a_new</span> <span class="o">=</span> <span class="n">a</span>
+        <span class="n">cp_new</span> <span class="o">=</span> <span class="n">cp</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;________________</span><span class="se">\n\n</span><span class="s1">В случае приобретения </span><span class="si">{}</span><span class="s1"> единиц </span><span class="si">{}</span><span class="s1"> ресурса:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        
+        
+        <span class="n">profits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">optimal_receipt</span><span class="p">(</span><span class="n">c_new</span><span class="p">,</span><span class="n">s_new</span><span class="p">,</span><span class="n">a_new</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span><span class="o">*</span><span class="n">cp</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     
     <span class="n">max_index</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">profits</span><span class="p">),</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
     
@@ -14526,7 +14533,7 @@ $</p>
 <span class="n">cp</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.22</span><span class="p">,</span><span class="mf">0.19</span><span class="p">]</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="n">with_n_additional_resources</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">cp</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+<span class="n">with_n_additional_resources</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">cp</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
 </pre></div>
 
      </div>
@@ -14583,27 +14590,27 @@ ________________
 по технологии 3 произвести 12	 продуктов
 по технологии 4 произвести 2	 продуктов
 
-Остаток 1 ресурса: 172
+Остаток 1 ресурса: 170
 Остаток 2 ресурса: 0
 Остаток 3 ресурса: 0
 ________________
 
 В случае приобретения 2 единиц 3 ресурса:
 
-Для достижения максимальной прибыли в 1848$, необходимо:
+Для достижения максимальной прибыли в 1833$, необходимо:
 
-по технологии 1 произвести 113	 продуктов
+по технологии 1 произвести 112	 продуктов
 по технологии 2 произвести 0	 продуктов
 по технологии 3 произвести 9	 продуктов
 по технологии 4 произвести 0	 продуктов
 
-Остаток 1 ресурса: 221
-Остаток 2 ресурса: 0
-Остаток 3 ресурса: 0
+Остаток 1 ресурса: 219
+Остаток 2 ресурса: 1
+Остаток 3 ресурса: 4
 ______________________________
 Итого:
-Лучше всего купить 2 единиц 3 ресурса.
-Это даст дополнительную прибыль в виде 14.6$.
+Лучше всего купить 2 единиц 2 ресурса.
+Это даст дополнительную прибыль в виде 2.6$.
 </pre>
 </div>
 </div>
@@ -14616,7 +14623,7 @@ ______________________________
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Видим, что первого ресурса докупать две единицы смысла нет. Прибыль та же.</p>
-<p>Есть смысл купить две единицы третьего ресурса ресурса. Это повысит прибыль на $14.6$\$.</p>
+<p>Есть смысл купить две единицы второго ресурса ресурса. Это повысит прибыль на $2.6$\$.</p>
 
 </div>
 </div>
