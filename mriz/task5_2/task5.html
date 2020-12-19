@@ -14262,9 +14262,18 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="3.-&#1060;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103;-&#1087;&#1086;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;">3. &#1060;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1087;&#1086;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;<a class="anchor-link" href="#3.-&#1060;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103;-&#1087;&#1086;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;">&#182;</a></h1><p>Пусть</p>
 <ul>
-<li><p>$X$ - двумерное пространство использования заданных объемов.</p>
+<li><p>$X = ||x_{ij}||$ - двумерное пространство использования заданных объемов.</p>
 </li>
-<li><p>$C$ - двумерное пространство прибыли при заданном объеме ресурсов.</p>
+<li><p>$C = ||c_{ij}||$ - двумерное пространство прибыли при заданном объеме ресурсов.</p>
+</li>
+<li><p>$W = (w_1,w_2,w_3,w_4)$ - пространство весов объемов</p>
+</li>
+</ul>
+<p>Тут</p>
+<ul>
+<li><p>$i$ - объем ресурсов</p>
+</li>
+<li><p>$j$ - номер агрегата</p>
 </li>
 </ul>
 <p>Задача:</p>
@@ -14272,13 +14281,11 @@ $$
 \sum\limits_{i=1}^4\sum\limits_{j=1}^4c_{ij}x_{ij} \rightarrow \max
 $$<p>Ограничения нормированности по ГОСТу (условия):</p>
 <p>$
-\begin{cases}
-x \geq 0\\
-x \leq 1\\
-\forall i: \sum\limits_{j=1}^4{x_{ij}} = 1\\
-\forall j: \sum\limits_{i=1}^4{x_{ij}} = 1\\
-\end{cases}
-$</p>
+\forall i,j:\ 0 \leq x_{ij} \leq 1
+$ - неотрицательность числа использования объемов и невозможность использовать объем больше 1 раза</p>
+<p>$
+\sum\limits_{i=1}^4\sum\limits_{j=1}^4 x_{ij}w_i \leq 4
+$ - ограничение на общий объем</p>
 
 </div>
 </div>
@@ -14303,10 +14310,10 @@ $</p>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[57]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">accuracy</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">w</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">resource_limit</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">accuracy</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Функция, подсчитывающая объем получаемой прибыли</span>
 <span class="sd">    при использовании оптимального распределения</span>
@@ -14317,6 +14324,13 @@ $</p>
 <span class="sd">    заданном объеме ресурсов</span>
 <span class="sd">    для агрегатов</span>
 <span class="sd">    </span>
+<span class="sd">    w - список</span>
+<span class="sd">    весов объемов</span>
+<span class="sd">    (по умолчанию массив чисел от 1 до n, где n - число вариантов)</span>
+<span class="sd">    </span>
+<span class="sd">    resource_limit - число</span>
+<span class="sd">    ресурсов, которое можно использовать</span>
+<span class="sd">    </span>
 <span class="sd">    accuracy - число</span>
 <span class="sd">    запятых, которе оставляем после запятой</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -14325,16 +14339,14 @@ $</p>
     <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
     
     <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-
-    <span class="n">x</span> <span class="o">=</span> <span class="n">cvxpy</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">integer</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-
-    <span class="n">col_n_e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">c</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">row_n_e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">c</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">),</span> 
-                  <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">),</span> 
-                  <span class="p">(</span><span class="n">col_n_e</span> <span class="o">@</span> <span class="n">x</span> <span class="o">==</span> <span class="n">row_n_e</span><span class="p">),</span> 
-                  <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">row_n_e</span><span class="o">.</span><span class="n">T</span> <span class="o">==</span> <span class="n">col_n_e</span><span class="p">)]</span>
+    <span class="n">shp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">w</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">shp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span><span class="o">*</span><span class="n">shp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shp</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">cvxpy</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shp</span><span class="p">,</span> <span class="n">integer</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">),</span>
+                   <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">),</span>
+                   <span class="p">(</span><span class="n">cvxpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cvxpy</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="n">resource_limit</span><span class="p">)]</span>
 
     <span class="n">total_value</span> <span class="o">=</span> <span class="o">-</span><span class="n">cvxpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cvxpy</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
     <span class="n">problem</span> <span class="o">=</span> <span class="n">cvxpy</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cvxpy</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">total_value</span><span class="p">),</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
@@ -14362,7 +14374,7 @@ $</p>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[58]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mf">7.5</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span>
@@ -14390,14 +14402,14 @@ $</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Макимальная прибыль: 32.5$
+<pre>Макимальная прибыль: 19.5$
 
 Матрица распределения работы агрегатов:
 
-0 1 0 0
 1 0 0 0
-0 0 0 1
-0 0 1 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
 </pre>
 </div>
 </div>
@@ -14410,14 +14422,15 @@ $</p>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Получаем максимальную суммарную прибыль в</p>
-<p>$32.5\$$</p>
+<p>$19.5\$$</p>
 <p>Получаем распределение работы агрегатов по объему ресурсов:</p>
 <p>$\begin{pmatrix}
-0 &amp; 1 &amp; 0 &amp; 0 \\
 1 &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 1 \\
-0 &amp; 0 &amp; 1 &amp; 0
+1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 0
 \end{pmatrix}$</p>
+<p>Видим вполне логичный результат. Из самой таблицы видно, что лучше всего использовать все агрегаты по одному разу.</p>
 
 </div>
 </div>
