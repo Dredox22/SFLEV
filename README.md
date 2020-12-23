@@ -1,4 +1,4 @@
-![sf](logo.png)
+![sf](images/logo.png)
 
 # This is my homework tasks
 
